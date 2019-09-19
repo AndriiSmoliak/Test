@@ -1,0 +1,26 @@
+<div class="global">
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div
+    class="form-group"
+    [ngClass]="{'has-error': form.get('password').invalid && form.get('password').touched}"
+  >
+    <input
+      appPassword
+      #password
+      type="{{status ? 'text' : 'password'}}"
+      id="password"
+      placeholder=""
+      formControlName="password"
+      [ngClass]="{'small-letter-spacing': (password.value.length > 8),'test': (status)}"
+      [ngStyle]="{'font-size': ((form.controls.password.value | minFontSize) + (status ? 0 : 8)) + 'px',
+       'letter-spacing': (form.controls.password.value | minLetterSpacing) + 'px'
+       }"
+    >
+  </div>
+</form>
+<div class="img-eye" (mouseenter)="status = !status">
+  <img src="./../assets/img/view.svg" alt="">
+</div>
+</div>
+
+<router-outlet></router-outlet>
